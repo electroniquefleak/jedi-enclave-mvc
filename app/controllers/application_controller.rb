@@ -55,4 +55,11 @@ class ApplicationController < Sinatra::Base
     redirect '/login'
   end
 
+  def logged_in?
+    !!current_user
+  end
+
+  def current_user
+    Jedi.find(session[:jedi_id])
+  end
  end
