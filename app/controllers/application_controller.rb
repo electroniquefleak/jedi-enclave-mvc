@@ -47,7 +47,12 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/index' do
-    erb :index
+    if logged_in?
+      @jedi = Jedi.find(session[:jedi_id])
+      erb :index
+    else 
+      redirect '/login'
+    end
   end
 
   get '/logout' do
