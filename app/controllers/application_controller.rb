@@ -14,7 +14,23 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     redirect_if_logged_in
-    erb:index
+    erb :index
   end
 
-end
+  get '/registration' do
+    erb :registration
+  end
+
+  post '/registration' do
+    jedi = Jedi.new(params)
+    if jedi.save
+      #session
+      redirect '/index'
+    else
+      @error = "These aren't the credentials you're looking for!"
+      redirect '/registration'
+    end
+  end
+
+
+ end
