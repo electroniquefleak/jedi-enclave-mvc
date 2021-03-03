@@ -49,6 +49,7 @@ class ApplicationController < Sinatra::Base
   get '/index' do
     if logged_in?
       @jedi = Jedi.find(session[:jedi_id])
+      @posts = Post.all
       erb :index
     else 
       redirect '/login'

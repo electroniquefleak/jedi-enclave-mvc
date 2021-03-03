@@ -1,1 +1,7 @@
 <h1>Welcome back <%= @jedi.name %>!</h1>
+<h2> Here are the posts (for everyone, to be changed)</h2>
+<ul>
+    <% @posts.each do |post| %>
+        <li><%= post.title %></li>
+    <% end %>
+</ul>
