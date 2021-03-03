@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_141342) do
 
   create_table "jedis", force: :cascade do |t|
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.string "name"
     t.integer "prestige_id"
     t.datetime "created_at", null: false
