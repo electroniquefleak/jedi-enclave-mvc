@@ -12,6 +12,7 @@ gem 'dotenv'
 gem 'nokogiri', '1.10.8'
 gem 'net-http'
 gem 'faker'
+#gem 'tux'
 
 group :development do
     gem 'pry'

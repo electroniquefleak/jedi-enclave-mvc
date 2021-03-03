@@ -1,0 +1,2 @@
+class PrestigesController < ApplicationController
+end

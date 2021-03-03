@@ -1,5 +1,5 @@
 class Jedi < ActiveRecord::Base
-    belongs_to :class
+    belongs_to :prestige
 
     has_many :posts
 

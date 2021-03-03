@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
 
   configure do
     enable :sessions
-    set :session_secret, 'mysupersecretpassword'
+    set :session_secret, 'bingbangbong'
     set :views, 'app/views'
   end
 

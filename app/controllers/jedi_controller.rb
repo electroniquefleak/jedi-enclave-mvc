@@ -1,2 +1,0 @@
-class JediController < ApplicationController
-end
