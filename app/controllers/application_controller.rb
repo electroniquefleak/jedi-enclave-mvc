@@ -13,8 +13,22 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/login' do
-    redirect_if_logged_in
-    erb :index
+    #redirect_if_logged_in
+    erb :login
+  end
+
+  post '/login' do
+    jedi = Jedi.find_by(username: params[:username])
+    if jedi && jedi.authenticate(params[:password])
+      session[:jedi_id]= jedi.id
+      redirect '/index'
+    elsif jedi
+      @error = "This isn't the password you're looking for!"
+      redirect '/login'
+    else
+      @error = "This isn't the username you're looking for!"
+      redirect '/login'
+    end
   end
 
   get '/registration' do
@@ -32,5 +46,8 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get '/index' do
+    erb :index
+  end
 
  end
