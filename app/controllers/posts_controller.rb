@@ -10,11 +10,12 @@ class PostsController < ApplicationController
     post '/posts/add' do
         if logged_in?
             if params[:title].empty? || params[:body].empty?
-                @error = "Invalid.  The post title or body was empty."
+                flash[:message] = "Invalid.  The post title or body was empty."
+                erb :'posts/new_post'
             else
                 #create the post
                 Post.create(title: params[:title], body: params[:body], jedi_id: session[:jedi_id])
-                flash[message] = "You've come to the dark side. Post made."
+                flash[:message] = "You've come to the dark side. Post made."
                 redirect '/index'
             end
         else 
@@ -30,6 +31,7 @@ class PostsController < ApplicationController
             erb :'posts/edit_post'
         else
             # possible error or flash message
+            flash[:message] = "This isn't the post you are looking to edit."
             redirect '/index'
         end 
 
@@ -58,4 +60,23 @@ class PostsController < ApplicationController
         @post = Post.find(params[:id])
         erb :'posts/show_post'
     end
+
+    #Destroy page
+    delete 'posts/:id' do
+        post = Post.find(params[:id])
+        if logged_in? && post.jedi_id == current_user.id
+            #delete the post
+            post.destroy
+            flash[:message] = "The post is now a member of the force."
+            redirect '/index'
+        else
+            flash[:message] = "Denied access you are!"
+            redirect '/index'
+        end
+    end
+
+
+    
+    #how to get the user's collection of posts
+    #@my_posts = Post.where(jedi_id: current_user.id)
 end

@@ -1,7 +1,17 @@
 <h1>Welcome back <%= @jedi.name %>!</h1>
 <h2> Here are the posts (for everyone, to be changed)</h2>
+<a href="/posts/new">
+    <button>Create Post</button>
+</a>
 <ul>
     <% @posts.each do |post| %>
-        <li><%= post.title %></li>
+        <li>
+            <a href="/posts/<%= post.id %>"><%= post.title %></a>
+            <% if post.jedi_id == current_user.id %>
+                <a href="/posts/edit/<%= post.id %>">
+                    <button>Edit</button>
+                </a>
+            <% end %>
+        </li>
     <% end %>
 </ul>
