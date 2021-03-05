@@ -1,17 +1,3 @@
-<h1>Welcome back <%= @jedi.name %>!</h1>
-<h2> Here are the posts (for everyone, to be changed)</h2>
-<a href="/posts/new">
-    <button>Create Post</button>
-</a>
-<ul>
-    <% @posts.each do |post| %>
-        <li>
-            <a href="/posts/<%= post.id %>"><%= post.title %></a>
-            <% if post.jedi_id == current_user.id %>
-                <a href="/posts/edit/<%= post.id %>">
-                    <button>Edit</button>
-                </a>
-            <% end %>
-        </li>
-    <% end %>
-</ul>
+<h1>Home page</h1>
+<h2>Are you a new? Register to create a new jedi: <a href="/registration">Register</a></h2>
+<h2>Are you already a jedi? Login: <a href="/login">May the force be with you</a></h2>

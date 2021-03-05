@@ -17,6 +17,17 @@
     <% if flash.has?(:message) %>
       <h2 class="flash-message"><%= flash[:message] %></h2>
     <% end %>
+    <% if logged_in? %>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/posts/index">Posts</a>
+        <a href="/logout">Logout</a>
+      </nav>
+    </header>
+    <% else %>
+      <h1>The Jedi Enclave</h1>
+    <% end %>
     <div class="wrapper">
 
         <%= yield %>

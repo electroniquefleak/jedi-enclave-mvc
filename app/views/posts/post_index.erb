@@ -1,0 +1,21 @@
+<h1>Welcome back <%= @jedi.name %>!</h1>
+<h2> Here are the posts (for everyone, to be changed)</h2>
+<a href="/posts/new">
+    <button>Create Post</button>
+</a>
+<ul>
+    <% @posts.each do |post| %>
+        <li>
+            <a href="/posts/<%= post.id %>"><%= post.title %></a>
+            <% if post.jedi_id == current_user.id %>
+                <a href="/posts/edit/<%= post.id %>">
+                    <button>Edit</button>
+                </a>
+                <form action="/posts/<%= post.id %>" method="POST">
+                    <input type="hidden" id="hidden" name="_method" value="delete">
+                    <button type="submit">Delete</button>
+                </form>
+            <% end %>
+        </li>
+    <% end %>
+</ul>
