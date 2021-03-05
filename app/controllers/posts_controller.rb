@@ -27,7 +27,7 @@ class PostsController < ApplicationController
                 #create the post
                 Post.create(title: params[:title], body: params[:body], jedi_id: session[:jedi_id])
                 flash[:message] = "You've come to the dark side. Post made."
-                redirect '/index'
+                redirect '/posts/index'
             end
         else 
             redirect '/login'
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
         else
             # possible error or flash message
             flash[:message] = "This isn't the post you are looking to edit."
-            redirect '/index'
+            redirect '/posts/index'
         end 
 
     end
@@ -59,11 +59,11 @@ class PostsController < ApplicationController
                 Post.update(title: params[:title], body: params[:body])
                 flash[:message] = "Success! Updated is your post!"
                 #flash
-                redirect '/index'
+                redirect '/posts/index'
             end
         else 
             flash[:message] = "Incomplete are your credentials!"
-            redirect '/index'
+            redirect '/posts/index'
         end
     end
     #SHOW page

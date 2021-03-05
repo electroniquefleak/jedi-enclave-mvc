@@ -55,17 +55,12 @@ class ApplicationController < Sinatra::Base
     redirect '/login'
   end
 
-  # post '/logout' do
-  #   session.clear
-  #   redirect '/login'
-  # end
-
   def logged_in?
-    !!current_user
+    !!session[:jedi_id]
   end
 
   def current_user
-    Jedi.find(session[:jedi_id])
+    @current_user ||= Jedi.find(session[:jedi_id])
   end
 
   def redirect_if_logged_in
