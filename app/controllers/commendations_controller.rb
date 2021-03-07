@@ -1,2 +1,0 @@
-class CommendationsController < ApplicationController
-end

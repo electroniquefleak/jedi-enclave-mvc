@@ -1,5 +1,9 @@
 <h1><%= @post.title %></h1>
 <h2><%= @post.body %></h2>
+<h3><%= @post.commendations.count %> Likes</h3>
+<form method="POST" action="/posts/<%= @post.id %>/commendation">
+    <button type="submit" <%= "disabled" if @post.commendations.any?{|commendation| commendation.jedi_id == current_user.id} %> >+1</button>
+</form>
 <h3>Comments:</h3>
 <% if @post.comments.count > 0 %>
     <% @post.comments.reverse.each do |comment| %>

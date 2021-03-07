@@ -39,7 +39,6 @@ class PostsController < ApplicationController
             @post
             erb :'posts/edit_post'
         else
-            # possible error or flash message
             flash[:message] = "This isn't the post you are looking to edit."
             redirect '/posts/index'
         end 
@@ -77,6 +76,18 @@ class PostsController < ApplicationController
         else
             flash[:message] = "Denied access you are!"
             redirect '/posts/index'
+        end
+    end
+
+    post '/posts/:id/commendation' do
+        post = Post.find(params[:id])
+        if post.commendations.any?{|commendation| commendation.jedi_id == current_user.id}
+            flash[:message] = "Post already commended!"
+            redirect "/posts/#{post.id}"
+        else
+            Commendation.create(jedi_id: current_user.id, post_id: post.id)
+            flash[:message] = "You've liked the post: #{post.title}!"
+            redirect "/posts/#{post.id}"
         end
     end
 end
