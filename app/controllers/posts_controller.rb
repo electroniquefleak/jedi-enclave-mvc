@@ -90,4 +90,17 @@ class PostsController < ApplicationController
             redirect "/posts/#{post.id}"
         end
     end
+    
+    delete '/posts/:id/commendation' do
+        post = Post.find(params[:id])
+        if post.commendations.any?{|commendation| commendation.jedi_id == current_user.id}
+            commendation = Commendation.find_by(jedi_id: current_user.id, post_id: post.id)
+            commendation.destroy
+            flash[:message] = "You no longer like the post: #{post.title}!"
+            redirect "/posts/#{post.id}"
+        else
+            flash[:message] = "This isn't your fight!"
+            redirect "/posts/#{post.id}"
+        end
+    end
 end
