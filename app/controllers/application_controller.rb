@@ -43,7 +43,7 @@ class ApplicationController < Sinatra::Base
     jedi = Jedi.new(params)
     if jedi.save
       session[:jedi_id]= jedi.id
-      redirect '/posts/index'
+      redirect '/prestiges/select'
     else
       @error = "These aren't the credentials you're looking for!"
       redirect '/registration'

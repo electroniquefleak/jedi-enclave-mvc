@@ -56,7 +56,7 @@ class PostsController < ApplicationController
                 #flash[:alert_type] = danger
                 erb :'posts/edit_post'
             else
-                Post.update(title: params[:title], body: params[:body])
+                @post.update(title: params[:title], body: params[:body])
                 flash[:message] = "Success! Updated is your post!"
                 #flash
                 redirect '/posts/index'

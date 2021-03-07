@@ -7,8 +7,8 @@ end
 use Rack::MethodOverride
 
 use PostsController
-#use JedisController
-#use PrestigesController
+use JedisController
+use PrestigesController
 #use CommendationsController
 #use CommentsController
 

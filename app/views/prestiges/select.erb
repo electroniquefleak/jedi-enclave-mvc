@@ -1,0 +1,33 @@
+<h1>Select a Prestige Class.</h2>
+<p>The prestiges are:</p>
+<% @prestiges.each do |prestige| %>
+    <div class="card">
+        <div class="card-title"><%= prestige.name %></div>
+        <div class="card-img">
+            <img src="<%= prestige.image_url %>" alt="<%= prestige.name %> avatar">
+        </div>
+        <div class="card-body">
+            <div class="leader">Leader: <%= prestige.leader %></div>
+            <div class="description">Description: <%= prestige.description %></div>
+        </div>
+    </div>
+<% end %>
+<br>
+<p>Currently, you are
+    <% if @jedi.prestige_id.nil? %>
+    undecided of your path, young one.
+    <% else %>
+       a <%= @jedi.prestige.name %>
+    <% end %>
+</p>
+<form action="/jedi/edit/<%= @jedi.id %>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="patch" >
+    <label for="prestige_selector">Available Prestiges:</label>
+    <select name="prestige_id">
+        <% @prestiges.each do |prestige| %>
+        <option value="<%= prestige.id %>"><%= prestige.name %></option>
+        <% end %>
+    </select>
+    <br>
+    <button type="submit">Select Your Prestige!</button>
+</form>
