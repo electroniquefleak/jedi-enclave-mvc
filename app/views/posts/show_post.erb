@@ -1,2 +1,19 @@
 <h1><%= @post.title %></h1>
 <h2><%= @post.body %></h2>
+<h3>Comments:</h3>
+<% if @post.comments.count > 0 %>
+    <% @post.comments.reverse.each do |comment| %>
+        <p><a href="/jedi/<%= comment.jedi.id %>"><%= comment.jedi.name %></a> said:</p>
+        <p><%= comment.body %></p>
+        <small><%= format_timestamp(comment.created_at) %></small>
+    <% end %>
+<% else %>
+    <p>No comments, yet.</p>
+<% end %>
+<form action="/comments/<%= @post.id%>" method="POST">
+    <div>
+        <label for="body">Message:</label>
+        <textarea rows="5" id="body" name="body"></textarea>
+    </div>
+<button type="submit">Post comment!</button>
+</form>

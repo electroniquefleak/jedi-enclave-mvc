@@ -80,4 +80,9 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  def format_timestamp(created_at)
+    create_at = created_at.localtime
+    created_at.strftime("on %m/%d/%Y at %I:%M %p")
+  end
+
  end

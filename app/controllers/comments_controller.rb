@@ -1,14 +1,13 @@
 class CommentsController < ApplicationController
     post '/comments/:id' do
-
         data = {
             body: params[:body],
-            jedi_id: current_jedi.id,
+            jedi_id: current_user.id,
             post_id: params[:id]
         }
 
         Comment.create(data)
-
+        flash[:message] = "Success! You commented on the post!"
         redirect "/posts/#{ params[:id] }"
     end
 
@@ -17,5 +16,4 @@ class CommentsController < ApplicationController
 
         comment.delete
     end
-    
 end
