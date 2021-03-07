@@ -10,6 +10,11 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
+  not_found do
+    status 404
+    erb :error
+  end
+
   get "/" do
     redirect_if_logged_in
     erb :index

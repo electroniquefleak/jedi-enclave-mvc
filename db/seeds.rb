@@ -3,20 +3,20 @@ require_relative '../config/environment'
 def create_all_prestiges
     prestige_data = [
         {
-            name: "Jedi Guardian",
-            leader: "Skarch Vaunk",
-            description: "Lorem ipsum",
+            name: "Jedi Weapon Master",
+            leader: "Daric Doldarra",
+            description: "Is it battle that stirs you, to meet an enemy blade upon blade? Such is the way of the greatest of Jedi warriors, the weapon masters.",
             image_url: "/images/Guardian_Protector.png"
         },
         {
-            name: "Jedi Sentinel",
-            leader: "Restelly Quist",
-            description: "Lorem ipsum",
+            name: "Jedi Watchman",
+            leader: "Karista Pho",
+            description: "Or perhaps it is investigating the mysteries of the galaxy, seeking out injustice and harm, and bringing it into the light? Such is the way of the Jedi Watchmen in the time of Ulic Qel-Droma… and Exar Kun.",
             image_url: "/images/Jedi_Sentinel_Shadow.png"
         },
-        {   name: "Jedi Consular",
-            leader: "Sabla-Mandibu",
-            description: "Lorem ipsum",
+        {   name: "Jedi Sage",
+            leader: "Erestria Telanar",
+            description: "Or perhaps your way lies upon the ancient mysteries… and to teach others the ways of the Force, as I have, the way of the Jedi Sages.",
             image_url: "/images/Consular_Sage.png"
         }
     ]

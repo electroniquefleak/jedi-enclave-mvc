@@ -9,7 +9,6 @@ class JedisController < ApplicationController
     end
 
     patch '/jedi/edit/:id' do 
-        #verify/authenticate the current user & the jedi owner
         jedi = Jedi.find(params[:id])
         if logged_in? && jedi.id == current_user.id
             current_user.update_attribute(:prestige_id, params[:prestige_id])

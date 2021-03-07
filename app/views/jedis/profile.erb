@@ -5,6 +5,7 @@
 <% if @jedi.posts.count > 0 %>
     <% @jedi.posts.each do |post| %>
         <a href="/posts/:id"><%= post.title %></a>
+        <a href="/posts/:id"><%= post.body %></a>
     <% end %>
 <% else %>
     <p>You haven't begun your posting journey, yet.</p>
