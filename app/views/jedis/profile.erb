@@ -9,7 +9,7 @@
         <p<%= post.body %></p>
         <h3>Comments about <%= post.title %>:</h>
         <% if post.comments.count > 0 %>
-            <% post.comments.reverse.each do |comment| %>
+            <% post.comments.each do |comment| %>
                 <p><a href="/jedi/<%= comment.jedi.id %>"><%= comment.jedi.name %></a> said:</p>
                 <p><%= comment.body %></p>
             <% end %>

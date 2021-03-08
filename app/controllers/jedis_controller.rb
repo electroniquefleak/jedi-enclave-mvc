@@ -14,11 +14,11 @@ class JedisController < ApplicationController
         jedi = Jedi.find(params[:id])
         if logged_in? && jedi.id == current_user.id
             if params[:prestige_id] == "1"
-                local_img = "Guardian_Protector.png"
+                local_img = "Jedi_Battlemaster_Preset.png"
             elsif params[:prestige_id] == "2"
-                local_img = "Jedi_Sentinel_Shadow.png"
+                local_img = "Jedi_Shadow_Preset.png"
             else
-                local_img = "Consular_Sage.png"
+                local_img = "Consular_Sage_Preset.png"
             end
             image = "/images/#{local_img}"
             current_user.update_attribute(:prestige_id, params[:prestige_id])
