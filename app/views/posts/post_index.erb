@@ -1,12 +1,21 @@
 <h1>Welcome back, <%= @jedi.name %>!</h1>
 <h2>The HoloNet's been buzzing since your absence.</h2>
-<a href="/posts/new">
-    <button>Create Post</button>
-</a>
+<div class="text-end">
+    <a href="/posts/new">
+        <button class="btn btn-lg btn-secondary">Create Post</button>
+    </a>
+</div>
 <ul>
     <% @posts.each do |post| %>
-        <li>
-            <a href="/posts/<%= post.id %>"><%= post.title %></a>
+        <div class="card mt-3 p-3">
+            <h3 class="card-title">
+                <a href="/posts/<%= post.id %>"><%= post.title %></a>
+                <div>
+                    <span>by</span>
+                    <img class="thumbnail-jedi" src="<%= post.jedi.image_url %>" />
+                    <span><%= post.jedi.name %></span>
+                </div>
+            </h3>
             <% if post.jedi_id == current_user.id %>
                 <a href="/posts/edit/<%= post.id %>">
                     <button>Edit</button>
@@ -16,6 +25,6 @@
                     <button type="submit">Delete</button>
                 </form>
             <% end %>
-        </li>
+        </div>
     <% end %>
 </ul>

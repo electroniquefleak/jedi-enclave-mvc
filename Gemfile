@@ -11,7 +11,6 @@ gem 'rack-flash3'
 gem 'dotenv'
 gem 'nokogiri', '1.10.8'
 gem 'net-http'
-gem 'bootstrap'
 
 group :development do
     gem 'pry'
