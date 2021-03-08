@@ -1,14 +1,15 @@
 <h1>Select a Prestige Class.</h2>
 <p>The prestiges are:</p>
 <% @prestiges.each do |prestige| %>
-    <div class="card">
-        <div class="card-title"><%= prestige.name %></div>
+    <div class="card text-center">
+
+        <div class="description"><%= prestige.description %></div>
         <div class="card-img">
             <img src="<%= prestige.image_url %>" alt="<%= prestige.name %> avatar">
         </div>
         <div class="card-body">
-            <div class="leader">Leader: <%= prestige.leader %></div>
-            <div class="description">Description: <%= prestige.description %></div>
+        <div class="card-title"><%= prestige.name %></div>
+        <div class="leader">Council Member: <%= prestige.leader %></div>
         </div>
     </div>
 <% end %>
