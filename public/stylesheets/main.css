@@ -88,6 +88,10 @@
   .post-body-content {
     font-size: 0.9em;
   }
+
+  .thumbnail-jedi {
+    height: 50px;
+  }
 }
 
 @media screen and (max-width: 600px) {

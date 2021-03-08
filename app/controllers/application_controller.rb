@@ -31,10 +31,10 @@ class ApplicationController < Sinatra::Base
       session[:jedi_id]= jedi.id
       redirect '/posts/index'
     elsif jedi
-      @error = "This isn't the password you're looking for!"
+      flash[:message] = "This isn't the password you're looking for!"
       redirect '/login'
     else
-      @error = "This isn't the username you're looking for!"
+      flash[:message] = "This isn't the username you're looking for!"
       redirect '/login'
     end
   end
@@ -50,7 +50,7 @@ class ApplicationController < Sinatra::Base
       session[:jedi_id]= jedi.id
       redirect '/prestiges/select'
     else
-      @error = "These aren't the credentials you're looking for!"
+      flash[:message] = "These aren't the credentials you're looking for!"
       redirect '/registration'
     end
   end
@@ -65,7 +65,7 @@ class ApplicationController < Sinatra::Base
   end
 
   def current_user
-    @current_user ||= Jedi.find(session[:jedi_id])
+    Jedi.find(session[:jedi_id])
   end
 
   def redirect_if_logged_in
