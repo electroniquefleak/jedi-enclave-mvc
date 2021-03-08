@@ -10,21 +10,25 @@
         <div class="card mt-3 p-3">
             <h3 class="card-title">
                 <a href="/posts/<%= post.id %>"><%= post.title %></a>
+            </h3>
+            <div class="d-flex justify-content-between">
                 <div>
                     <span>by</span>
                     <img class="thumbnail-jedi" src="<%= post.jedi.image_url %>" />
                     <span><%= post.jedi.name %></span>
                 </div>
-            </h3>
             <% if post.jedi_id == current_user.id %>
-                <a href="/posts/edit/<%= post.id %>">
-                    <button>Edit</button>
-                </a>
-                <form action="/posts/<%= post.id %>" method="POST">
-                    <input type="hidden" id="hidden" name="_method" value="delete">
-                    <button type="submit">Delete</button>
-                </form>
+                <div>
+                    <a href="/posts/edit/<%= post.id %>" class="my-3">
+                        <button class="btn btn-secondary">Edit</button>
+                    </a>
+                    <form action="/posts/<%= post.id %>" method="POST">
+                        <input type="hidden" id="hidden" name="_method" value="delete">
+                        <button class="btn btn-secondary mt-3" type="submit">Delete</button>
+                    </form>
+                </di>
             <% end %>
+            </div>
         </div>
     <% end %>
 </ul>
