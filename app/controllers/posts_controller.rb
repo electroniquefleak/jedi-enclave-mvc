@@ -104,12 +104,4 @@ class PostsController < ApplicationController
         end
     end
 
-    post '/search' do
-        if params[:search]
-          @posts = Post.search(params[:search])
-        else
-          @posts
-        end
-        erb :'results'  
-    end
 end

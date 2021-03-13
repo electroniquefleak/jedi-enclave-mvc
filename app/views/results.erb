@@ -1,11 +1,12 @@
 <% if @posts.present? %>
     <table>
-    <td>Search Results:</td>
+    <tr>Posts:</tr>
         <% @posts.each do |post| %>
-<tr><td><a href="/posts/<%= post.id %>"><%= post.title %></a>   </td>
-<td><%=h post.title %></td>
-<% end %>
+        <td>
+            <a href="/posts/<%= post.id %>"><%= post.title %></a>
+        </td>
+        <% end %>
+    </table>
 <% else %>
-<p>There are no posts containing the term(s) <%= params[:search] %>.</p>
+    <p>There are no posts containing the term(s) <%= params[:query] %>.</p>
 <% end %>
-</table>

@@ -60,6 +60,27 @@ class ApplicationController < Sinatra::Base
     redirect '/login'
   end
 
+  get '/search' do
+    # binding.pry
+    if params[:query] != ""
+      @posts = Post.where("title like ?", "%#{params[:query]}%")
+      @jedi = Jedi.where("name like ?", "%#{params[:query]}%")
+      result_size = @posts.count + @jedi.count
+      if result_size > 0
+        flash[:message] = "Of all posts, there were #{result_size} results..."
+      else
+        flash[:message] = "No results found!"
+      end
+    else
+      result_size = 0
+      flash[:message] = "Nothing searched for."
+    end
+    
+        
+    erb :results
+  end
+
+
   def logged_in?
     !!session[:jedi_id]
   end
